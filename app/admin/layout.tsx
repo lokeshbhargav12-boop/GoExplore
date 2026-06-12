@@ -13,10 +13,10 @@ export default function AdminLayout({
   const { user, loading, logout } = useAuth();
   const [isLoginPage, setIsLoginPage] = useState(false);
 
-  // Check if we're on the login page
+  // Check if we're on the login or register page
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsLoginPage(window.location.pathname === "/admin/login");
+      setIsLoginPage(window.location.pathname === "/admin/login" || window.location.pathname === "/admin/register");
     }
   }, []);
 
