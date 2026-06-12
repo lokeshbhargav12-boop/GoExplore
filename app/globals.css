@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 210 29% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 210 29% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-    --primary: 0 0% 0%;
+    --popover-foreground: 210 29% 14%;
+    --primary: 210 100% 28%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 210 29% 14%;
+    --muted: 210 20% 98%;
+    --muted-foreground: 215 16% 35%;
+    --accent: 187 100% 40%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 0%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 28%;
     --radius: 0.75rem;
   }
 
@@ -38,7 +38,7 @@
 }
 
 /* Import Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Custom styles */
 @layer components {
@@ -53,22 +53,71 @@
   }
 
   .btn-primary {
-    @apply bg-black text-white hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg;
+    @apply bg-travel-blue text-white hover:bg-travel-blue-dark hover:-translate-y-0.5 hover:shadow-lg;
   }
 
   .btn-secondary {
-    @apply bg-gray-100 text-black border border-gray-200 hover:bg-gray-200 hover:-translate-y-0.5;
+    @apply bg-white text-travel-blue border border-travel-blue hover:bg-gray-50 hover:-translate-y-0.5;
   }
 
-  .btn-outline {
-    @apply bg-transparent text-black border-2 border-black hover:bg-black hover:text-white;
+  .btn-accent {
+    @apply bg-travel-cyan text-white hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg;
   }
 
-  .card {
-    @apply bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold text-center;
   }
 
-  .glass {
-    @apply bg-white/80 backdrop-blur-xl border border-white/20;
+  .section-subtitle {
+    @apply text-sm uppercase tracking-widest text-travel-text-secondary text-center block;
   }
+}
+
+/* Hero wave divider */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.hero-wave svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 80px;
+}
+
+/* Hero slider arrows */
+.slider-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/40 transition-all;
+}
+
+/* SVG Line patterns */
+.svg-dotted-line circle {
+  fill: rgba(0, 194, 203, 0.4);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #004B8D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #003970;
 }

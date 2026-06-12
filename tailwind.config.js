@@ -42,6 +42,17 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        travel: {
+          blue: "#004B8D",
+          "blue-dark": "#003970",
+          "blue-light": "#1E7FC9",
+          cyan: "#00C2CB",
+          "cyan-light": "#E0F7FA",
+          white: "#FFFFFF",
+          gray: "#F5F7FA",
+          "text-primary": "#1A202C",
+          "text-secondary": "#4A5568",
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
