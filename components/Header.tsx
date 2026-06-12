@@ -45,7 +45,7 @@ export default function Header() {
             <Link href="/admin/login" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
               Sign In
             </Link>
-            <Link href="/admin/login" className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            <Link href="/admin/register" className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
               Register
             </Link>
           </div>
@@ -83,7 +83,7 @@ export default function Header() {
                 <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg">
                   Sign In
                 </Link>
-                <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg">
+                <Link href="/admin/register" className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg">
                   Register
                 </Link>
               </div>
