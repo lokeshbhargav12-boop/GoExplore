@@ -42,12 +42,12 @@ export default function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+            <Link href="/admin/login" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
               Sign In
-            </button>
-            <button className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            </Link>
+            <Link href="/admin/login" className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
               Register
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,12 +80,12 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex gap-2 mt-4 pt-4 border-t border-gray-100">
-                <button className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg">
+                <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg">
                   Sign In
-                </button>
-                <button className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg">
+                </Link>
+                <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg">
                   Register
-                </button>
+                </Link>
               </div>
             </nav>
           </div>
