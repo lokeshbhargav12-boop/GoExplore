@@ -10,7 +10,12 @@ export default function AdminLoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, continueAsGuest } = useAuth();
+
+  const handleGuestMode = () => {
+    continueAsGuest();
+    router.push("/");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +74,7 @@ export default function AdminLoginPage() {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
-        <div className="mt-4 text-center">
+        <div className="mt-4 text-center space-y-2">
           <p className="text-gray-600">
             Don't have an account?{" "}
             <button
@@ -80,6 +85,15 @@ export default function AdminLoginPage() {
               Register here
             </button>
           </p>
+          <div className="pt-2 border-t border-gray-100">
+            <button
+              type="button"
+              onClick={handleGuestMode}
+              className="text-gray-500 hover:text-gray-800 text-sm transition-colors"
+            >
+              Or continue as Guest →
+            </button>
+          </div>
         </div>
       </form>
     </div>

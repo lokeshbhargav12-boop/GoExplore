@@ -19,9 +19,11 @@ import { auth } from "./firebase";
 interface AuthContextProps {
   user: User | null;
   loading: boolean;
+  isGuest: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  continueAsGuest: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -29,6 +31,7 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
     // Guard against auth being null during server‑side rendering/static export.
@@ -38,6 +41,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u);
+      if (u) {
+        setIsGuest(false);
+      }
       setLoading(false);
     });
     return () => unsubscribe();
@@ -48,6 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw new Error("Firebase auth is not initialized");
     }
     await signInWithEmailAndPassword(auth, email, password);
+    setIsGuest(false);
   };
 
   const register = async (email: string, password: string) => {
@@ -55,6 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw new Error("Firebase auth is not initialized");
     }
     await createUserWithEmailAndPassword(auth, email, password);
+    setIsGuest(false);
   };
 
   const logout = async () => {
@@ -62,10 +70,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw new Error("Firebase auth is not initialized");
     }
     await signOut(auth);
+    setIsGuest(false);
+  };
+
+  const continueAsGuest = () => {
+    setIsGuest(true);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, isGuest, login, register, logout, continueAsGuest }}>
       {children}
     </AuthContext.Provider>
   );

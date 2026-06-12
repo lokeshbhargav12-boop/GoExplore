@@ -2,9 +2,13 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useAuth } from '../lib/auth';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, isGuest, logout } = useAuth();
+  const isAuthenticated = !!user;
+  const isGuestUser = isGuest && !user;
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -42,12 +46,35 @@ export default function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/admin/login" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
-              Sign In
-            </Link>
-            <Link href="/admin/register" className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
-              Register
-            </Link>
+            {isGuestUser ? (
+              <>
+                <Link href="/admin/login" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+                  Sign In
+                </Link>
+                <Link href="/admin/register" className="px-5 py-2.5 text-sm font-medium bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                  Complete Registration
+                </Link>
+              </>
+            ) : isAuthenticated ? (
+              <>
+                <span className="text-sm text-gray-500">Welcome, {user.email?.split('@')[0] || 'User'}</span>
+                <button
+                  onClick={logout}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
+                >
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/admin/login" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors">
+                  Sign In
+                </Link>
+                <Link href="/admin/register" className="px-5 py-2.5 text-sm font-medium bg-black text-white rounded-full hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                  Register
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,12 +107,35 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex gap-2 mt-4 pt-4 border-t border-gray-100">
-                <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg">
-                  Sign In
-                </Link>
-                <Link href="/admin/register" className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg">
-                  Register
-                </Link>
+                {isGuestUser ? (
+                  <>
+                    <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg text-center">
+                      Sign In
+                    </Link>
+                    <Link href="/admin/register" className="flex-1 px-4 py-3 text-sm font-medium bg-amber-500 text-white rounded-lg text-center">
+                      Complete Registration
+                    </Link>
+                  </>
+                ) : isAuthenticated ? (
+                  <div className="flex flex-col w-full gap-2">
+                    <span className="px-4 py-2 text-sm text-gray-500">Welcome, {user.email?.split('@')[0] || 'User'}</span>
+                    <button
+                      onClick={() => { logout(); setIsMenuOpen(false); }}
+                      className="w-full px-4 py-3 text-sm font-medium text-red-600 border border-red-200 rounded-lg"
+                    >
+                      Log Out
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <Link href="/admin/login" className="flex-1 px-4 py-3 text-sm font-medium border border-gray-200 rounded-lg text-center">
+                      Sign In
+                    </Link>
+                    <Link href="/admin/register" className="flex-1 px-4 py-3 text-sm font-medium bg-black text-white rounded-lg text-center">
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
             </nav>
           </div>

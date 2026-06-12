@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useAuth } from "../../lib/auth";
 
 export default function AdminLayout({
@@ -11,14 +12,12 @@ export default function AdminLayout({
 }) {
   const [activeTab, setActiveTab] = useState("dashboard");
   const { user, loading, logout } = useAuth();
-  const [isLoginPage, setIsLoginPage] = useState(false);
-
-  // Check if we're on the login or register page
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsLoginPage(window.location.pathname === "/admin/login" || window.location.pathname === "/admin/register");
-    }
-  }, []);
+  const pathname = usePathname();
+  const isLoginPage =
+    pathname === "/admin/login" ||
+    pathname === "/admin/login/" ||
+    pathname === "/admin/register" ||
+    pathname === "/admin/register/";
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", href: "/admin", icon: "📊" },
