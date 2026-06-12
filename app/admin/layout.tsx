@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../lib/auth";
 
 export default function AdminLayout({
@@ -11,12 +11,25 @@ export default function AdminLayout({
 }) {
   const [activeTab, setActiveTab] = useState("dashboard");
   const { user, loading, logout } = useAuth();
+  const [isLoginPage, setIsLoginPage] = useState(false);
+
+  // Check if we're on the login page
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLoginPage(window.location.pathname === "/admin/login");
+    }
+  }, []);
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", href: "/admin", icon: "📊" },
     { id: "cars", label: "Car Listings", href: "/admin/cars", icon: "🚗" },
     { id: "tours", label: "Tour Listings", href: "/admin/tours", icon: "🌍" },
   ];
+
+  // If we're on the login page, don't apply authentication checks
+  if (isLoginPage) {
+    return <div>{children}</div>;
+  }
 
   if (loading) {
     return (
