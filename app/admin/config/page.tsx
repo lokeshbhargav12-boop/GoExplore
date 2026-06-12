@@ -19,8 +19,15 @@ export default function AdminConfigPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
-  // Load config from Firebase Realtime Database
+  // Load config from Firebase Realtime Database – guard against `db` being null during
+  // static generation (server‑side rendering). If `db` is unavailable, we simply skip the
+  // fetch and allow the page to render with empty defaults.
   useEffect(() => {
+    if (!db) {
+      // Firebase is not initialized (e.g., during static export). Mark loading as done.
+      setLoading(false);
+      return;
+    }
     const configRef = ref(db, "config");
     const unsubscribe = onValue(
       configRef,
@@ -54,6 +61,11 @@ export default function AdminConfigPage() {
     setSaving(true);
     setError(null);
     setMessage(null);
+    if (!db) {
+      setError("Firebase is not initialized – cannot save configuration.");
+      setSaving(false);
+      return;
+    }
     try {
       // Use set to overwrite the config node
       await set(ref(db, "config"), config);
