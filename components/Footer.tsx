@@ -72,7 +72,7 @@ export default function Footer() {
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <motion.a
-                href="tel:+91910568331"
+                href="tel:+917002915151"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-travel-blue to-travel-blue-light text-white rounded-full font-medium shadow-lg"
@@ -80,11 +80,11 @@ export default function Footer() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call: +91 91056 83331
+                Call: +91 70029 15151
               </motion.a>
               
               <motion.a
-                href="https://wa.me/91910568331"
+                href="https://wa.me/917002915151"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-medium shadow-lg"
@@ -166,8 +166,8 @@ export default function Footer() {
                 <span className="text-travel-green text-lg">📞</span>
                 <div>
                   <p className="text-white font-medium">Phone</p>
-                  <a href="tel:+91910568331" className="hover:text-travel-green transition-colors">
-                    +91 91056 83331
+                  <a href="tel:+917002915151" className="hover:text-travel-green transition-colors">
+                    +91 70029 15151
                   </a>
                 </div>
               </li>

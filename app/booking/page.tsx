@@ -252,13 +252,13 @@ export default function BookingPage() {
                   <span>📞</span> Need Help?
                 </h3>
                 <p className="text-white/90 mb-4">Call us anytime for instant booking assistance</p>
-                <a href="tel:+91910568331" className="flex items-center justify-center gap-2 w-full py-3 bg-white text-travel-green font-bold rounded-xl hover:shadow-lg transition-all">
-                  <span>📞</span> +91 91056 83331
+                <a href="tel:+917002915151" className="flex items-center justify-center gap-2 w-full py-3 bg-white text-travel-green font-bold rounded-xl hover:shadow-lg transition-all">
+                  <span>📞</span> +91 70029 15151
                 </a>
               </div>
 
               {/* WhatsApp */}
-              <a href="https://wa.me/91910568331" className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg transition-all">
+              <a href="https://wa.me/917002915151" className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg transition-all">
                 <span>💬</span> Chat on WhatsApp
               </a>
             </div>

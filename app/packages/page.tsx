@@ -162,10 +162,10 @@ export default function PackagesPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Need a Custom Package? 🤔</h2>
           <p className="text-white/90 mb-6">Tell us your requirements and we will create a personalized itinerary just for you!</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-travel-orange font-bold rounded-full hover:shadow-xl transition-all">
+            <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-travel-orange font-bold rounded-full hover:shadow-xl transition-all">
               <span>📞</span> Call Now
             </a>
-            <a href="https://wa.me/91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green-500 text-white font-bold rounded-full hover:shadow-xl transition-all">
+            <a href="https://wa.me/917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green-500 text-white font-bold rounded-full hover:shadow-xl transition-all">
               <span>💬</span> WhatsApp
             </a>
           </div>

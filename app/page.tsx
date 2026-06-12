@@ -59,7 +59,7 @@ export default function Home() {
                 <Link href="/packages/" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
                   <span>🎒</span> View Packages
                 </Link>
-                <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:shadow-xl transition-all">
+                <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:shadow-xl transition-all">
                   <span>📞</span> Call Now
                 </a>
               </div>
@@ -220,11 +220,11 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Ready for Your Northeast Adventure?</h2>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">Book now and get 20% OFF + FREE airport pickup! Limited seats available for this season.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-travel-green font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+              <a href="https://wa.me/917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-travel-green font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
                 <span>💬</span> WhatsApp Now
               </a>
-              <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-travel-yellow text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
-                <span>📞</span> Call: +91 91056 83331
+              <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-travel-yellow text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span>📞</span> Call: +91 70029 15151
               </a>
             </div>
           </motion.div>

@@ -14,7 +14,7 @@ export default function AboutPage() {
   const whyChooseUs = [
     { icon: '💰', title: 'Best Prices Guaranteed', desc: 'We promise the lowest prices. Found cheaper? We will match it plus give you 10% extra discount!' },
     { icon: '🤝', title: 'Local Experts', desc: 'Our guides are born and raised here. They know every hidden waterfall, best local food joints, and secret viewpoints!' },
-    { icon: '📞', title: '24/7 Support', desc: 'Stuck somewhere at 2 AM? Call us anytime! We are always just a phone call away at +91 91056 83331' },
+    { icon: '📞', title: '24/7 Support', desc: 'Stuck somewhere at 2 AM? Call us anytime! We are always just a phone call away at +91 70029 15151' },
     { icon: '🎁', title: 'Free Extras', desc: 'FREE airport pickup, FREE travel insurance, and FREE itinerary customization on every booking!' },
     { icon: '🛡️', title: 'Safe & Reliable', desc: 'Licensed travel agency with verified hotels, trained drivers, and proper safety measures.' },
     { icon: '❤️', title: 'Love for Northeast', desc: 'We are not just a travel company, we are Northeast enthusiasts sharing our love for this beautiful region!' },
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 <Link href="/packages/" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-travel-green to-travel-teal text-white font-bold rounded-full hover:shadow-lg transition-all">
                   <span>🎒</span> Explore Packages
                 </Link>
-                <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-full hover:bg-gray-200 transition-all">
+                <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-full hover:bg-gray-200 transition-all">
                   <span>📞</span> Call Us
                 </a>
               </div>
@@ -201,11 +201,11 @@ export default function AboutPage() {
               We promise to treat you like family and show you the Northeast like a local. No fancy words, just genuine experiences! ❤️
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-travel-green font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+              <a href="https://wa.me/917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-travel-green font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
                 <span>💬</span> Chat on WhatsApp
               </a>
-              <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-travel-yellow text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
-                <span>📞</span> Call: +91 91056 83331
+              <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-travel-yellow text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span>📞</span> Call: +91 70029 15151
               </a>
             </div>
           </motion.div>

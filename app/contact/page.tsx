@@ -33,8 +33,8 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: '📞', title: 'Call Us', info: '+91 91056 83331', sub: 'Available 24/7', color: 'from-travel-blue to-blue-600', href: 'tel:+91910568331' },
-              { icon: '💬', title: 'WhatsApp', info: '+91 91056 83331', sub: 'Quick Response', color: 'from-green-500 to-green-600', href: 'https://wa.me/91910568331' },
+              { icon: '📞', title: 'Call Us', info: '+91 70029 15151', sub: 'Available 24/7', color: 'from-travel-blue to-blue-600', href: 'tel:+917002915151' },
+              { icon: '💬', title: 'WhatsApp', info: '+91 70029 15151', sub: 'Quick Response', color: 'from-green-500 to-green-600', href: 'https://wa.me/917002915151' },
               { icon: '✉️', title: 'Email', info: 'info@goexplore.in', sub: 'We reply within 2 hours', color: 'from-orange-500 to-red-500', href: 'mailto:info@goexplore.in' },
             ].map((card, i) => (
               <motion.a 
