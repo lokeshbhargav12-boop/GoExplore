@@ -8,8 +8,8 @@ import { AuthProvider } from "../lib/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Go Explore | Discover The World With Us",
-  description: "Go Explore is more than a travel agency. Based in the heart of Assam, we curate immersive journeys across Shillong, Arunachal Pradesh, and beyond.",
+  title: "Go Explore | Northeast India Tour Packages | Shillong, Kaziranga, Arunachal",
+  description: "Book affordable Northeast India tour packages. Visit Shillong, Kaziranga, Tawang, Sikkim with expert guides. 24/7 support. Call +91 91056 83331",
 };
 
 export default function RootLayout({
@@ -22,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <Header />
-          {children}
+          <main className="pt-[72px] sm:pt-[88px]">
+            {children}
+          </main>
           <Footer />
         </AuthProvider>
       </body>

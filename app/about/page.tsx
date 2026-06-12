@@ -4,255 +4,211 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function AboutPage() {
-  const values = [
-    {
-      title: 'Authenticity',
-      description: 'We believe in real experiences. Our tours take you beyond tourist spots to the heart of Northeast Indian culture.',
-    },
-    {
-      title: 'Sustainability',
-      description: 'We promote eco-friendly tourism that protects the environment and empowers local communities.',
-    },
-    {
-      title: 'Expertise',
-      description: 'Our guides are passionate locals who know every hidden trail, waterfall, and story that makes Northeast India magical.',
-    },
-    {
-      title: 'Personalization',
-      description: 'Every journey is crafted to match your interests, pace, and budget. No cookie-cutter itineraries here.',
-    },
+  const stats = [
+    { icon: '🏆', value: '10+', label: 'Years Experience', color: 'from-blue-500 to-blue-600' },
+    { icon: '👥', value: '500+', label: 'Happy Travelers', color: 'from-green-500 to-teal-500' },
+    { icon: '🗺️', value: '50+', label: 'Destinations', color: 'from-orange-500 to-red-500' },
+    { icon: '⭐', value: '4.9', label: 'Average Rating', color: 'from-purple-500 to-pink-500' },
+  ];
+
+  const whyChooseUs = [
+    { icon: '💰', title: 'Best Prices Guaranteed', desc: 'We promise the lowest prices. Found cheaper? We will match it plus give you 10% extra discount!' },
+    { icon: '🤝', title: 'Local Experts', desc: 'Our guides are born and raised here. They know every hidden waterfall, best local food joints, and secret viewpoints!' },
+    { icon: '📞', title: '24/7 Support', desc: 'Stuck somewhere at 2 AM? Call us anytime! We are always just a phone call away at +91 91056 83331' },
+    { icon: '🎁', title: 'Free Extras', desc: 'FREE airport pickup, FREE travel insurance, and FREE itinerary customization on every booking!' },
+    { icon: '🛡️', title: 'Safe & Reliable', desc: 'Licensed travel agency with verified hotels, trained drivers, and proper safety measures.' },
+    { icon: '❤️', title: 'Love for Northeast', desc: 'We are not just a travel company, we are Northeast enthusiasts sharing our love for this beautiful region!' },
+  ];
+
+  const destinations = [
+    { name: 'Shillong', emoji: '🏔️', desc: 'Scotland of the East' },
+    { name: 'Kaziranga', emoji: '🦏', desc: 'Home of One-Horned Rhino' },
+    { name: 'Tawang', emoji: '🏛️', desc: 'Land of Monasteries' },
+    { name: 'Majuli', emoji: '🌿', desc: 'World\'s Largest River Island' },
+    { name: 'Sikkim', emoji: '🗻', desc: 'Gateway to Himalayas' },
+    { name: 'Cherrapunji', emoji: '💧', desc: 'Wettest Place on Earth' },
   ];
 
   return (
     <main className="min-h-screen">
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-travel-blue overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80"
-            alt="Northeast India"
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-3 block">About Us</span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Bridging You to the Soul<br />of <span className="text-travel-cyan">Northeast India</span>
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-travel-green via-travel-teal to-travel-blue">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-4">👋 Namaste from Assam!</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+              We are <span className="text-yellow-300">Go Explore</span>
             </h1>
-            <p className="text-white/70 text-sm max-w-xl mx-auto leading-relaxed">
-              More than a travel agency, we are passionate storytellers, local guides, and guardians of the Northeast's untamed beauty.
+            <p className="text-white/90 text-lg sm:text-xl max-w-3xl mx-auto mb-8">
+              Your friendly neighborhood travel experts from Assam, dedicated to showing you the breathtaking beauty of Northeast India! 🌿
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-20 bg-white">
+      {/* Our Story */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image Side */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              className="relative"
             >
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Northeast Nature"
-                  className="w-full h-full object-cover"
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=800" 
+                  alt="Northeast India Beauty" 
+                  className="w-full h-96 object-cover"
                 />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-2 block">Our Story</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-travel-blue mb-6">Born in the Heart of Assam</h2>
-              <p className="text-xs text-travel-text-secondary leading-relaxed mb-4">
-                Go Explore was founded with a simple yet powerful vision: to share the breathtaking beauty and rich cultural tapestry of Northeast India with travelers from around the world. What began as a small local initiative has grown into a trusted name in experiential travel.
-              </p>
-              <p className="text-xs text-travel-text-secondary leading-relaxed mb-4">
-                Based in Assam, we have spent over a decade exploring every corner of the Northeast—from the misty hills of Meghalaya to the serene monasteries of Arunachal Pradesh, from the wildlife corridors of Kaziranga to the living root bridges of Cherrapunji.
-              </p>
-              <p className="text-xs text-travel-text-secondary leading-relaxed">
-                Our team consists of passionate local guides, travel enthusiasts, and hospitality experts who understand that every journey should be as unique as the traveler embarking on it. We don't just show you places—we connect you with stories, people, and experiences that stay with you forever.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="section-subtitle text-xs tracking-[0.25em] mb-3">What We Stand For</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-travel-blue">
-              Our <span className="text-travel-cyan">Core Values</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                className="bg-white rounded-xl p-8 shadow-[0_2px_12px_rgba(0,75,141,0.06)] hover:shadow-[0_4px_20px_rgba(0,75,141,0.12)] transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="w-10 h-10 bg-travel-blue rounded-xl flex items-center justify-center text-white text-sm font-bold mb-4">
-                  {index + 1}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white font-bold text-lg">Northeast India - Where Nature Meets Culture 🌿</p>
                 </div>
-                <h3 className="text-sm font-bold text-travel-blue mb-2">{value.title}</h3>
-                <p className="text-xs text-travel-text-secondary leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Detail */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-2 block">Why Us</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-travel-blue mb-6">Experience Northeast Like a Local</h2>
-              <div className="space-y-4">
-                {[
-                  {
-                    title: 'Local Expertise',
-                    desc: 'Our guides grew up in these lands. They know the hidden trails, the best seasons, and the most authentic experiences.',
-                  },
-                  {
-                    title: 'Tailored Itineraries',
-                    desc: 'Whether you want adventure, culture, or relaxation, we craft trips that match your unique travel style.',
-                  },
-                  {
-                    title: 'Responsible Tourism',
-                    desc: 'We partner with local communities, use sustainable practices, and ensure your travels leave a positive impact.',
-                  },
-                  {
-                    title: '24/7 Support',
-                    desc: 'From planning to your last day, our team is always just a call away at +91 91056 83331.',
-                  },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <span className="w-6 h-6 rounded-full bg-travel-cyan/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg className="w-3 h-3 text-travel-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <div>
-                      <h4 className="text-xs font-bold text-travel-blue mb-1">{item.title}</h4>
-                      <p className="text-xs text-travel-text-secondary leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
               </div>
-              <div className="mt-8">
-                <Link
-                  href="/booking/"
-                  className="inline-block px-8 py-3 bg-travel-blue text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-travel-blue-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
-                >
-                  Start Your Journey
+              {/* Floating Badge */}
+              <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-6 py-3 rounded-full font-bold shadow-xl">
+                ⭐ Since 2014
+              </div>
+            </motion.div>
+
+            {/* Content Side */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              viewport={{ once: true }}
+            >
+              <span className="inline-block px-4 py-1 bg-travel-green/10 text-travel-green rounded-full text-sm font-medium mb-4">📖 Our Story</span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Born in the Heart of Assam ❤️</h2>
+              
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  <strong>Hello! 👋</strong> We are a small but passionate team of Northeast India enthusiasts based right here in Guwahati, Assam. Our journey started in 2014 when a group of college friends decided to show the world what makes our home so special.
+                </p>
+                <p>
+                  We are not some big corporate travel company sitting in a fancy office. We are locals who grew up exploring these misty hills, ancient monasteries, and lush tea gardens. We know the best momo shops, the hidden waterfalls, and the friendliest homestay uncles and aunties!
+                </p>
+                <p>
+                  <strong>Why "Go Explore"?</strong> Because that is exactly what we want you to do - go explore the unexplored, experience the extraordinary, and fall in love with Northeast India just like we did! 🎒
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <Link href="/packages/" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-travel-green to-travel-teal text-white font-bold rounded-full hover:shadow-lg transition-all">
+                  <span>🎒</span> Explore Packages
                 </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:order-first"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                      alt="Travel"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                      alt="Adventure"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-4 pt-8">
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                      alt="Nature"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                      alt="Culture"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+                <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-full hover:bg-gray-200 transition-all">
+                  <span>📞</span> Call Us
+                </a>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Banner */}
-      <section className="py-16 bg-travel-blue">
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-gray-900 to-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { value: '10+', label: 'Years Experience' },
-              { value: '500+', label: 'Happy Travelers' },
-              { value: '50+', label: 'Destinations' },
-              { value: '99%', label: 'Satisfaction Rate' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, i) => (
+              <motion.div 
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center"
               >
-                <div className="text-3xl sm:text-4xl font-bold text-travel-cyan mb-1">{stat.value}</div>
-                <div className="text-xs text-white/60 tracking-wide">{stat.label}</div>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.color} text-3xl shadow-lg mb-4`}>
+                  {stat.icon}
+                </div>
+                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-gradient-to-br from-travel-green/5 via-travel-teal/5 to-travel-blue/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 bg-travel-orange/10 text-travel-orange rounded-full text-sm font-medium mb-4">🌟 Why Choose Go Explore?</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Makes Us Special? 🤔</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">We are not perfect, but we try our best to make your trip memorable!</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Destinations We Cover */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1 bg-travel-blue/10 text-travel-blue rounded-full text-sm font-medium mb-4">🗺️ Destinations</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Where Can We Take You? 🚗</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">From misty mountains to river islands, we cover it all!</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {destinations.map((dest, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-gradient-to-br from-travel-green/10 to-travel-teal/10 rounded-2xl p-6 text-center border border-travel-green/20 hover:border-travel-green/40 transition-all"
+              >
+                <div className="text-4xl mb-2">{dest.emoji}</div>
+                <h3 className="font-bold text-gray-900 mb-1">{dest.name}</h3>
+                <p className="text-xs text-gray-500">{dest.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-travel-green via-travel-teal to-travel-blue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-4">🎉 Ready to Explore?</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Let Us Show You Our Home! 🏠</h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              We promise to treat you like family and show you the Northeast like a local. No fancy words, just genuine experiences! ❤️
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://wa.me/91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-travel-green font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span>💬</span> Chat on WhatsApp
+              </a>
+              <a href="tel:+91910568331" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-travel-yellow text-gray-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-1 transition-all">
+                <span>📞</span> Call: +91 91056 83331
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </main>

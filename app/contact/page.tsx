@@ -1,22 +1,11 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', destination: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,254 +13,149 @@ export default function ContactPage() {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const inputClass =
-    "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-black focus:border-transparent focus:bg-white transition-all outline-none";
-
-  const contactInfo = [
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      ),
-      title: "Visit Us",
-      lines: ["Assam, Northeast India"],
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-      title: "Email Us",
-      lines: ["info@goexplore.in", "bookings@goexplore.in"],
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-          />
-        </svg>
-      ),
-      title: "Call Us",
-      lines: ["+91 91056 83331", "+91 91056 83332"],
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-      title: "Working Hours",
-      lines: ["Mon - Fri: 9:00 AM - 8:00 PM", "Sat - Sun: 10:00 AM - 6:00 PM"],
-    },
-  ];
+  const destinations = ['Shillong & Meghalaya', 'Kaziranga Wildlife Safari', 'Arunachal Pradesh', 'Sikkim & Gangtok', 'Majuli Island', 'Dzukou Valley Trek', 'Northeast Complete Circuit', 'Other/Custom Package'];
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero */}
-      <section className="relative py-16 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">
-              Get in Touch
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
-              Contact Us
-            </h1>
-            <p className="text-gray-500 text-lg">
-              We're here to help. Reach out to our team for any inquiries.
-            </p>
+      <section className="relative py-16 bg-gradient-to-r from-travel-green via-travel-teal to-travel-blue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-4">📞 Get in Touch</span>
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Contact Us</h1>
+            <p className="text-white/90 text-lg max-w-2xl mx-auto">Have questions? We are here to help! Call, WhatsApp, or fill the form below.</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                className="bg-neutral-50 rounded-2xl p-6"
+      {/* Contact Cards */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {[
+              { icon: '📞', title: 'Call Us', info: '+91 91056 83331', sub: 'Available 24/7', color: 'from-travel-blue to-blue-600', href: 'tel:+91910568331' },
+              { icon: '💬', title: 'WhatsApp', info: '+91 91056 83331', sub: 'Quick Response', color: 'from-green-500 to-green-600', href: 'https://wa.me/91910568331' },
+              { icon: '✉️', title: 'Email', info: 'info@goexplore.in', sub: 'We reply within 2 hours', color: 'from-orange-500 to-red-500', href: 'mailto:info@goexplore.in' },
+            ].map((card, i) => (
+              <motion.a 
+                key={i} 
+                href={card.href}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-all border border-gray-100"
               >
-                <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center text-white mb-4">
-                  {info.icon}
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${card.color} text-3xl shadow-lg mb-4`}>
+                  {card.icon}
                 </div>
-                <h3 className="font-semibold mb-2">{info.title}</h3>
-                {info.lines.map((line) => (
-                  <p key={line} className="text-sm text-gray-500">
-                    {line}
-                  </p>
-                ))}
-              </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{card.title}</h3>
+                <p className="text-travel-green font-bold text-lg mb-1">{card.info}</p>
+                <p className="text-gray-500 text-sm">{card.sub}</p>
+              </motion.a>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Contact Form */}
-      <section className="py-12 bg-neutral-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              className="bg-white rounded-3xl p-8 sm:p-12 shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Form */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
             >
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">📋 Send us a Message</h2>
+              <p className="text-gray-600 mb-6">Fill this form and we will call you back within 30 minutes!</p>
+
               {isSubmitted ? (
-                <motion.div
-                  className="text-center py-8"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg
-                      className="w-8 h-8 text-green-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="text-2xl font-semibold mb-2">Message Sent</h2>
-                  <p className="text-gray-500">
-                    Thank you for reaching out. We'll get back to you
-                    within 24 hours.
-                  </p>
-                </motion.div>
+                <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+                  <div className="text-5xl mb-3">🎉</div>
+                  <h3 className="text-xl font-bold text-green-800 mb-2">Message Sent!</h3>
+                  <p className="text-green-700">Thank you for contacting us. Our team will call you within 30 minutes.</p>
+                </div>
               ) : (
-                <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className={inputClass}
-                        placeholder="John Doe"
-                      />
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+                      <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all" placeholder="Enter your name" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className={inputClass}
-                        placeholder="john@example.com"
-                      />
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                      <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all" placeholder="+91 XXXXX XXXXX" />
                     </div>
                   </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className={inputClass}
-                      placeholder="How can we help?"
-                    />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email (Optional)</label>
+                    <input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all" placeholder="your@email.com" />
                   </div>
-                  <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className={inputClass + " resize-none"}
-                      placeholder="Tell us more about your inquiry..."
-                    />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Interested Destination *</label>
+                    <select required value={formData.destination} onChange={(e) => setFormData({...formData, destination: e.target.value})} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all">
+                      <option value="">Select a destination</option>
+                      {destinations.map((d) => <option key={d} value={d}>{d}</option>)}
+                    </select>
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full py-4 px-8 bg-black text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-all hover:shadow-2xl"
-                  >
-                    Send Message
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                    <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all resize-none" placeholder="Tell us about your travel plans, dates, number of people, etc." />
+                  </div>
+                  <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-travel-green to-travel-teal text-white font-bold rounded-xl hover:shadow-lg transition-all">
+                    <span>📤</span> Send Message
                   </button>
                 </form>
               )}
+            </motion.div>
+
+            {/* Info Side */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {/* Address Card */}
+              <div className="bg-gradient-to-br from-travel-green/10 to-travel-teal/10 rounded-2xl p-6 border border-travel-green/20">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span>🏢</span> Our Office
+                </h3>
+                <div className="space-y-3 text-gray-700">
+                  <p className="flex items-start gap-2">
+                    <span className="text-travel-green">📍</span>
+                    <span>Go Explore Travels<br />House No. 123, Near Guwahati Airport<br />Guwahati, Assam - 781015</span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="text-travel-green">📋</span>
+                    <span>GSTIN: 18BDJPS2506K1ZY</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Quick Info */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span>⏰</span> Working Hours
+                </h3>
+                <div className="space-y-2 text-gray-700">
+                  <p className="flex justify-between"><span>Monday - Saturday:</span> <span className="font-medium">9:00 AM - 8:00 PM</span></p>
+                  <p className="flex justify-between"><span>Sunday:</span> <span className="font-medium">10:00 AM - 6:00 PM</span></p>
+                  <p className="flex justify-between text-travel-green font-medium"><span>Emergency Support:</span> <span>24/7 🆘</span></p>
+                </div>
+              </div>
+
+              {/* Promise */}
+              <div className="bg-gradient-to-r from-yellow-100 via-orange-100 to-yellow-100 rounded-2xl p-6 border border-yellow-200">
+                <h3 className="text-lg font-bold text-orange-800 mb-2 flex items-center gap-2">
+                  <span>🎁</span> Our Promise
+                </h3>
+                <ul className="space-y-2 text-orange-700">
+                  <li className="flex items-center gap-2">✅ Response within 30 minutes</li>
+                  <li className="flex items-center gap-2">✅ Best price guarantee</li>
+                  <li className="flex items-center gap-2">✅ No hidden charges</li>
+                  <li className="flex items-center gap-2">✅ Free itinerary customization</li>
+                </ul>
+              </div>
             </motion.div>
           </div>
         </div>

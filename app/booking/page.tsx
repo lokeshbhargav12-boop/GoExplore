@@ -1,27 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import tours from '../../data/tours.json';
 
 export default function BookingPage() {
+  const [selectedPackage, setSelectedPackage] = useState('');
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    name: '',
     phone: '',
-    pickupDate: '',
-    pickupTime: '',
-    returnDate: '',
-    returnTime: '',
-    car: '',
-    message: '',
+    email: '',
+    travelDate: '',
+    travelers: '2',
+    package: '',
+    specialRequests: ''
   });
-
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pkgId = params.get('package');
+    if (pkgId) {
+      const tour = tours.find(t => t.id === parseInt(pkgId));
+      if (tour) {
+        setSelectedPackage(tour.id.toString());
+        setFormData(prev => ({ ...prev, package: tour.id.toString() }));
+      }
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,214 +35,234 @@ export default function BookingPage() {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const inputClass = "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-black focus:border-transparent focus:bg-white transition-all outline-none";
-  const labelClass = "block text-sm font-medium text-gray-700 mb-1.5";
-
-  const carOptions = [
-    { value: '', label: 'Select a vehicle' },
-    { value: 'mercedes-s-class', label: 'Mercedes-Benz S-Class - $450/day' },
-    { value: 'bmw-m8', label: 'BMW M8 Competition - $550/day' },
-    { value: 'audi-r8', label: 'Audi R8 Spyder - $650/day' },
-    { value: 'porsche-911', label: 'Porsche 911 GT3 - $750/day' },
-    { value: 'range-rover', label: 'Range Rover Autobiography - $500/day' },
-    { value: 'lamborghini', label: 'Lamborghini Huracan - $1200/day' },
-    { value: 'ferrari-roma', label: 'Ferrari Roma - $1000/day' },
-    { value: 'bentley-continental', label: 'Bentley Continental GT - $700/day' },
-    { value: 'rolls-royce', label: 'Rolls-Royce Ghost - $1500/day' },
-  ];
+  const selectedTour = tours.find(t => t.id === parseInt(selectedPackage));
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Page Header */}
-      <section className="relative py-16 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">Reservation</span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
-              Book Your Experience
-            </h1>
-            <p className="text-gray-500 text-lg">
-              Complete the form below to reserve your luxury vehicle
-            </p>
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero */}
+      <section className="relative py-16 bg-gradient-to-r from-travel-green via-travel-teal to-travel-blue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-4">📅 Book Your Trip</span>
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Book Your Northeast Adventure</h1>
+            <p className="text-white/90 text-lg max-w-2xl mx-auto">Fill the form below and we will confirm your booking within 2 hours!</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Booking Form */}
-      <section className="py-12 bg-neutral-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {isSubmitted ? (
-              <motion.div
-                className="bg-white rounded-3xl p-12 text-center shadow-lg"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Booking Form */}
+            <div className="lg:col-span-2">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
               >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-semibold mb-2">Booking Confirmed</h2>
-                <p className="text-gray-500">
-                  Thank you for choosing Go Explore. Our team will contact you shortly to confirm your reservation details.
-                </p>
+                {isSubmitted ? (
+                  <div className="text-center py-12">
+                    <div className="text-6xl mb-4">🎉</div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Booking Request Received!</h2>
+                    <p className="text-gray-600 mb-6">Thank you for choosing Go Explore. Our team will call you within 2 hours to confirm your booking.</p>
+                    <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+                      <p className="text-green-800 font-medium">📞 We will call you at: {formData.phone}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">📝 Booking Details</h2>
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                      {/* Select Package */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Select Package *</label>
+                        <select 
+                          required 
+                          value={selectedPackage} 
+                          onChange={(e) => {
+                            setSelectedPackage(e.target.value);
+                            setFormData({...formData, package: e.target.value});
+                          }}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                        >
+                          <option value="">Choose a package</option>
+                          {tours.map((tour) => (
+                            <option key={tour.id} value={tour.id}>
+                              {tour.name} - {tour.price}
+                            </option>
+                          ))}
+                          <option value="custom">Custom Package (Tell us your requirements)</option>
+                        </select>
+                      </div>
+
+                      {/* Package Preview */}
+                      {selectedTour && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          className="bg-gradient-to-r from-travel-green/10 to-travel-teal/10 rounded-xl p-4 border border-travel-green/20"
+                        >
+                          <div className="flex gap-4">
+                            <img src={selectedTour.image} alt={selectedTour.name} className="w-24 h-24 rounded-lg object-cover" />
+                            <div>
+                              <h4 className="font-bold text-gray-900">{selectedTour.name}</h4>
+                              <p className="text-travel-green font-bold">{selectedTour.price}</p>
+                              <p className="text-sm text-gray-600">📅 {selectedTour.duration}</p>
+                              <div className="flex gap-1 mt-1">
+                                {selectedTour.highlights.slice(0, 2).map((h, i) => (
+                                  <span key={i} className="text-xs bg-white px-2 py-0.5 rounded-full">{h}</span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Personal Details */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                          <input 
+                            type="text" 
+                            required 
+                            value={formData.name} 
+                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                            placeholder="Your full name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                          <input 
+                            type="tel" 
+                            required 
+                            value={formData.phone} 
+                            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                            placeholder="+91 XXXXX XXXXX"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
+                        <input 
+                          type="email" 
+                          value={formData.email} 
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Travel Date *</label>
+                          <input 
+                            type="date" 
+                            required 
+                            value={formData.travelDate} 
+                            onChange={(e) => setFormData({...formData, travelDate: e.target.value})}
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Number of Travelers *</label>
+                          <select 
+                            required 
+                            value={formData.travelers} 
+                            onChange={(e) => setFormData({...formData, travelers: e.target.value})}
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all"
+                          >
+                            {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                              <option key={n} value={n}>{n} {n === 1 ? 'Person' : 'People'}</option>
+                            ))}
+                            <option value="10+">10+ People (Group Booking)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Special Requests (Optional)</label>
+                        <textarea 
+                          rows={3} 
+                          value={formData.specialRequests} 
+                          onChange={(e) => setFormData({...formData, specialRequests: e.target.value})}
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-travel-green focus:border-transparent transition-all resize-none"
+                          placeholder="Any special requirements, dietary preferences, pickup location, etc."
+                        />
+                      </div>
+
+                      <button 
+                        type="submit" 
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-travel-green to-travel-teal text-white font-bold rounded-xl hover:shadow-lg transition-all text-lg"
+                      >
+                        <span>🎒</span> Submit Booking Request
+                      </button>
+
+                      <p className="text-center text-sm text-gray-500">
+                        By submitting, you agree to our terms. We will call you to confirm within 2 hours.
+                      </p>
+                    </form>
+                  </>
+                )}
               </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 sm:p-12 shadow-lg">
-                {/* Vehicle Selection */}
-                <div className="mb-8">
-                  <div className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white mb-4">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a2 2 0 104 0H9h6m-1.25 3.25L13.25 15m-3.75 4.25L7.25 15m8-3.75L17 9.25" />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-semibold mb-4">Select Vehicle</h2>
-                  <select
-                    name="car"
-                    value={formData.car}
-                    onChange={handleChange}
-                    required
-                    className={`${inputClass} appearance-none cursor-pointer`}
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'currentColor\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1.5rem' }}
-                  >
-                    {carOptions.map((option) => (
-                      <option key={option.value} value={option.value}>{option.label}</option>
-                    ))}
-                  </select>
-                </div>
+            </div>
 
-                {/* Personal Information */}
-                <div className="mb-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white">
-                      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold">Personal Information</h2>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className={labelClass}>First Name</label>
-                      <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required className={inputClass} placeholder="John" />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Last Name</label>
-                      <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required className={inputClass} placeholder="Doe" />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Email</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="john@example.com" />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Phone</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="+1 234 567 890" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Pickup Details */}
-                <div className="mb-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white">
-                      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold">Pickup Details</h2>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className={labelClass}>Pickup Date</label>
-                      <input type="date" name="pickupDate" value={formData.pickupDate} onChange={handleChange} required className={inputClass} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Pickup Time</label>
-                      <input type="time" name="pickupTime" value={formData.pickupTime} onChange={handleChange} required className={inputClass} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Return Date</label>
-                      <input type="date" name="returnDate" value={formData.returnDate} onChange={handleChange} required className={inputClass} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>Return Time</label>
-                      <input type="time" name="returnTime" value={formData.returnTime} onChange={handleChange} required className={inputClass} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Additional Notes */}
-                <div className="mb-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white">
-                      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold">Additional Notes</h2>
-                    </div>
-                  </div>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className={inputClass + ' resize-none'}
-                    placeholder="Any special requests or requirements..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full py-4 px-8 bg-black text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-all hover:shadow-2xl"
-                >
-                  Confirm Reservation
-                </button>
-              </form>
-            )}
-          </motion.div>
-
-          {/* Trust Badges */}
-          <motion.div
-            className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {[
-              { icon: 'check', title: 'Free Cancellation', desc: 'Up to 24 hours before pickup' },
-              { icon: 'lock', title: 'Secure Payment', desc: 'Encrypted transactions' },
-              { icon: 'phone', title: 'Instant Confirmation', desc: 'Receive details within minutes' },
-            ].map((badge) => (
-              <div key={badge.title} className="bg-white rounded-2xl p-6 text-center shadow-sm">
-                <div className="text-2xl mb-2">{badge.icon === 'check' && '✓'}{badge.icon === 'lock' && '🔒'}{badge.icon === 'phone' && '📞'}</div>
-                <div className="font-medium">{badge.title}</div>
-                <div className="text-sm text-gray-500">{badge.desc}</div>
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* Trust Badges */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span>🛡️</span> Why Book With Us?
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    { icon: '✅', text: 'Best Price Guarantee' },
+                    { icon: '✅', text: 'Free Cancellation (24h before)' },
+                    { icon: '✅', text: 'No Hidden Charges' },
+                    { icon: '✅', text: 'Instant Confirmation' },
+                    { icon: '✅', text: '24/7 Support' },
+                    { icon: '✅', text: 'Free Airport Pickup' },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-gray-700">
+                      <span className="text-green-500">{item.icon}</span> {item.text}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </motion.div>
+
+              {/* Payment Info */}
+              <div className="bg-gradient-to-br from-yellow-100 via-orange-100 to-yellow-100 rounded-2xl p-6 border border-yellow-200">
+                <h3 className="font-bold text-orange-800 mb-4 flex items-center gap-2">
+                  <span>💳</span> Payment Options
+                </h3>
+                <ul className="space-y-2 text-orange-700">
+                  <li className="flex items-center gap-2">💵 Cash on Arrival</li>
+                  <li className="flex items-center gap-2">📱 UPI / Paytm / GPay</li>
+                  <li className="flex items-center gap-2">💳 Credit/Debit Card</li>
+                  <li className="flex items-center gap-2">🏦 Bank Transfer</li>
+                </ul>
+                <p className="text-sm text-orange-600 mt-4">Only 30% advance required to confirm booking!</p>
+              </div>
+
+              {/* Contact Card */}
+              <div className="bg-gradient-to-r from-travel-green to-travel-teal rounded-2xl p-6 text-white">
+                <h3 className="font-bold mb-4 flex items-center gap-2">
+                  <span>📞</span> Need Help?
+                </h3>
+                <p className="text-white/90 mb-4">Call us anytime for instant booking assistance</p>
+                <a href="tel:+91910568331" className="flex items-center justify-center gap-2 w-full py-3 bg-white text-travel-green font-bold rounded-xl hover:shadow-lg transition-all">
+                  <span>📞</span> +91 91056 83331
+                </a>
+              </div>
+
+              {/* WhatsApp */}
+              <a href="https://wa.me/91910568331" className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl hover:shadow-lg transition-all">
+                <span>💬</span> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
