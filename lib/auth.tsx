@@ -12,6 +12,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -19,6 +20,7 @@ interface AuthContextProps {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -48,6 +50,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await signInWithEmailAndPassword(auth, email, password);
   };
 
+  const register = async (email: string, password: string) => {
+    if (!auth) {
+      throw new Error("Firebase auth is not initialized");
+    }
+    await createUserWithEmailAndPassword(auth, email, password);
+  };
+
   const logout = async () => {
     if (!auth) {
       throw new Error("Firebase auth is not initialized");
@@ -56,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
