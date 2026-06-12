@@ -24,6 +24,7 @@ export default function Header() {
     { href: '/', label: 'Home', icon: '🏠' },
     { href: '/about/', label: 'About Us', icon: '👥' },
     { href: '/packages/', label: 'Tour Packages', icon: '🎒' },
+    { href: '/cars/', label: 'Rent Car', icon: '🚗' },
     { href: '/booking/', label: 'Book Now', icon: '📅' },
     { href: '/contact/', label: 'Contact', icon: '📞' },
   ];

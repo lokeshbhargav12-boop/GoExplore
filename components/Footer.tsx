@@ -8,6 +8,7 @@ export default function Footer() {
     { label: '🏠 Home', href: '/' },
     { label: '👥 About Us', href: '/about/' },
     { label: '🎒 Tour Packages', href: '/packages/' },
+    { label: '🚗 Rent Car', href: '/cars/' },
     { label: '📅 Book Now', href: '/booking/' },
     { label: '📞 Contact', href: '/contact/' },
   ];

@@ -3,274 +3,246 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import cars from '../../data/cars.json';
 
 export default function CarsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedType, setSelectedType] = useState('All');
+  const [selectedSeats, setSelectedSeats] = useState('All');
 
-  const categories = ['All', 'Luxury', 'Sports', 'SUV', 'Exotic'];
-
-  const cars = [
-    {
-      id: 1,
-      name: 'Mercedes-Benz S-Class',
-      price: '$450/day',
-      image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c702?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Luxury',
-      description: 'Ultimate luxury sedan with handcrafted interior',
-      seats: 5,
-      transmission: 'Automatic',
-      fuel: 'Hybrid',
-      tag: 'Most Popular',
-    },
-    {
-      id: 2,
-      name: 'BMW M8 Competition',
-      price: '$550/day',
-      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Sports',
-      description: 'High-performance grand tourer with V8 power',
-      seats: 4,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'New Arrival',
-    },
-    {
-      id: 3,
-      name: 'Audi R8 Spyder',
-      price: '$650/day',
-      image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Exotic',
-      description: 'Supercar with stunning V10 engine and open top',
-      seats: 2,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'Limited',
-    },
-    {
-      id: 4,
-      name: 'Porsche 911 GT3',
-      price: '$750/day',
-      image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Sports',
-      description: 'Iconic sports car with track-focused precision',
-      seats: 2,
-      transmission: 'PDK',
-      fuel: 'Petrol',
-      tag: 'Premium',
-    },
-    {
-      id: 5,
-      name: 'Range Rover Autobiography',
-      price: '$500/day',
-      image: 'https://images.unsplash.com/photo-1563720223185-11003dccd935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'SUV',
-      description: 'Ultimate luxury SUV with commanding presence',
-      seats: 5,
-      transmission: 'Automatic',
-      fuel: 'Hybrid',
-      tag: 'Popular',
-    },
-    {
-      id: 6,
-      name: 'Lamborghini Huracan',
-      price: '$1200/day',
-      image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Exotic',
-      description: 'Italian supercar with aggressive styling',
-      seats: 2,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'Exclusive',
-    },
-    {
-      id: 7,
-      name: 'Ferrari Roma',
-      price: '$1000/day',
-      image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Exotic',
-      description: 'Elegant grand tourer with timeless design',
-      seats: 4,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'New',
-    },
-    {
-      id: 8,
-      name: 'Bentley Continental GT',
-      price: '$700/day',
-      image: 'https://images.unsplash.com/photo-1542282088-fe8426682b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Luxury',
-      description: 'British grand tourer with unmatched refinement',
-      seats: 4,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'Premium',
-    },
-    {
-      id: 9,
-      name: 'Rolls-Royce Ghost',
-      price: '$1500/day',
-      image: 'https://images.unsplash.com/photo-1566008885218-90f92069936d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Luxury',
-      description: 'The pinnacle of automotive luxury and comfort',
-      seats: 5,
-      transmission: 'Automatic',
-      fuel: 'Petrol',
-      tag: 'Flagship',
-    },
-  ];
+  const carTypes = ['All', 'SUV', 'Hatchback', 'MPV', 'Minibus', 'Luxury Van'];
+  const seatOptions = ['All', '5 Seats', '7 Seats', '12+ Seats'];
 
   const filteredCars = cars.filter(car => {
-    const matchesCategory = selectedCategory === 'All' || car.category === selectedCategory;
-    const matchesSearch = car.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          car.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const typeMatch = selectedType === 'All' || car.type === selectedType;
+    let seatsMatch = true;
+    if (selectedSeats === '5 Seats') seatsMatch = car.seats === 5;
+    else if (selectedSeats === '7 Seats') seatsMatch = car.seats === 7;
+    else if (selectedSeats === '12+ Seats') seatsMatch = car.seats >= 12;
+    return typeMatch && seatsMatch;
   });
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Hero Header */}
-      <section className="relative py-20 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">Our Fleet</span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
-              Luxury Vehicle Collection
-            </h1>
-            <p className="text-gray-500 text-lg">
-              Choose from our curated selection of premium automobiles
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Banner */}
+      <section className="relative py-20 bg-gradient-to-r from-travel-green via-travel-teal to-travel-blue">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-4">🚗 Car Rentals</span>
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Rent a Car for Your Trip!</h1>
+            <p className="text-white/90 text-lg max-w-2xl mx-auto">
+              Clean, comfortable cars with experienced drivers. Perfect for exploring Northeast India! 🌿
             </p>
           </motion.div>
         </div>
       </section>
 
+      {/* Why Rent With Us */}
+      <section className="py-12 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: '🚗', title: 'Clean Cars', desc: 'Well maintained' },
+              { icon: '👨‍✈️', title: 'Expert Drivers', desc: 'Local knowledge' },
+              { icon: '💰', title: 'Best Prices', desc: 'No hidden charges' },
+              { icon: '📞', title: '24/7 Support', desc: 'Always available' },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ delay: i * 0.1 }}
+                className="text-center p-4 bg-gradient-to-br from-travel-green/5 to-travel-teal/5 rounded-2xl border border-travel-green/10"
+              >
+                <div className="text-4xl mb-2">{item.icon}</div>
+                <h3 className="font-bold text-gray-900">{item.title}</h3>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
-      <section className="py-8 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-between gap-4"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
-            {/* Category Tabs */}
-            <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 w-full sm:w-auto">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-5 py-2 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                    selectedCategory === category
-                      ? 'bg-black text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+      <section className="py-6 bg-white border-b sticky top-[72px] sm:top-[88px] z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+            {/* Car Type Filter */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {carTypes.map((type) => (
+                <button 
+                  key={type} 
+                  onClick={() => setSelectedType(type)} 
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                    selectedType === type 
+                      ? 'bg-gradient-to-r from-travel-green to-travel-teal text-white shadow-md' 
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  {category}
+                  {type}
                 </button>
               ))}
             </div>
 
-            {/* Search */}
-            <div className="relative w-full sm:w-72">
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search vehicles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-100 rounded-full text-sm border-none focus:ring-2 focus:ring-black focus:bg-white transition-all"
-              />
+            {/* Seats Filter */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {seatOptions.map((seats) => (
+                <button 
+                  key={seats} 
+                  onClick={() => setSelectedSeats(seats)} 
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                    selectedSeats === seats 
+                      ? 'bg-gradient-to-r from-travel-blue to-travel-blue-light text-white shadow-md' 
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {seats}
+                </button>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Car Grid */}
-      <section className="py-12 bg-neutral-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCars.map((car, index) => (
-              <motion.div
-                key={car.id}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+      {/* Cars Grid */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredCars.map((car, i) => (
+              <motion.div 
+                key={car.id} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={car.image}
-                    alt={car.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                {/* Image */}
+                <div className="relative">
+                  <img 
+                    src={car.image} 
+                    alt={car.name} 
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" 
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-semibold rounded-full">
-                      {car.tag}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-bold rounded-full">
+                      {car.type}
                     </span>
+                    {car.rating >= 4.8 && (
+                      <span className="px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 text-xs font-bold rounded-full">
+                        ⭐ Top Rated
+                      </span>
+                    )}
                   </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-black/80 text-white text-xs font-medium rounded-full">
-                      {car.category}
+
+                  {/* Price Badge */}
+                  <div className="absolute bottom-3 right-3">
+                    <span className="px-4 py-2 bg-white text-travel-green font-bold rounded-full shadow-lg">
+                      {car.price}
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-semibold">{car.name}</h3>
-                    <span className="text-lg font-medium text-gray-900">{car.price}</span>
-                  </div>
-                  <p className="text-gray-500 mb-4">{car.description}</p>
 
-                  {/* Specs */}
-                  <div className="flex gap-4 mb-5 text-sm text-gray-500">
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                      {car.seats} seats
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-                      </svg>
-                      {car.transmission}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                      {car.fuel}
-                    </div>
+                {/* Content */}
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{car.name}</h3>
+                  
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span className="flex items-center gap-1">👥 {car.seats} Seats</span>
+                    <span className="flex items-center gap-1 text-yellow-600">
+                      ⭐ {car.rating} ({car.reviews})
+                    </span>
                   </div>
 
-                  <Link
-                    href="/booking/"
-                    className="block w-full text-center py-3 bg-gray-100 rounded-xl font-medium hover:bg-black hover:text-white transition-all"
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{car.description}</p>
+
+                  {/* Features */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {car.features.map((feature, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-travel-green/10 text-travel-green text-xs rounded-full">
+                        ✓ {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <Link 
+                    href={`/booking/?car=${car.id}`}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-travel-blue to-travel-blue-light text-white font-bold rounded-xl hover:shadow-lg transition-all"
                   >
-                    Reserve Now
+                    <span>🚗</span> Book This Car
                   </Link>
                 </div>
               </motion.div>
             ))}
           </div>
 
+          {/* No Results */}
           {filteredCars.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-gray-500 text-lg">No vehicles found matching your criteria</p>
+            <div className="text-center py-20">
+              <span className="text-6xl mb-4 block">🔍</span>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No cars found</h3>
+              <p className="text-gray-600">Try selecting different filters</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Pricing Info */}
+      <section className="py-12 bg-gradient-to-br from-travel-green/5 via-travel-teal/5 to-travel-blue/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1 bg-travel-orange/10 text-travel-orange rounded-full text-sm font-medium mb-3">💰 Pricing Info</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What's Included?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Transparent pricing with no hidden charges!</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: '✅', title: 'Driver Charges', desc: 'Experienced local driver included' },
+              { icon: '✅', title: 'Fuel', desc: 'All fuel costs covered' },
+              { icon: '✅', title: 'Toll & Parking', desc: 'Highway tolls and parking fees included' },
+              { icon: '✅', title: 'AC', desc: 'Air conditioning in all vehicles' },
+              { icon: '✅', title: 'Insurance', desc: 'Vehicle insurance covered' },
+              { icon: '✅', title: '24/7 Support', desc: 'Emergency assistance anytime' },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg flex items-start gap-4"
+              >
+                <span className="text-3xl">{item.icon}</span>
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-12 bg-gradient-to-r from-travel-orange to-red-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Need a Car for Your Trip? 🚗</h2>
+          <p className="text-white/90 mb-6">Call us now and get your car booked within minutes! Free cancellation available.</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="tel:+917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-travel-orange font-bold rounded-full hover:shadow-xl transition-all">
+              <span>📞</span> Call Now
+            </a>
+            <a href="https://wa.me/917002915151" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green-500 text-white font-bold rounded-full hover:shadow-xl transition-all">
+              <span>💬</span> WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </main>
