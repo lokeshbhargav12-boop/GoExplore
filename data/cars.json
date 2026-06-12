@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Mercedes-Benz S-Class",
+    "price": "$450/day",
+    "image": "https://images.unsplash.com/photo-1549399542-7e3f8b79c702?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury",
+    "description": "Ultimate luxury sedan with handcrafted interior",
+    "seats": 5,
+    "transmission": "Automatic",
+    "fuel": "Hybrid",
+    "tag": "Most Popular"
+  },
+  {
+    "id": 2,
+    "name": "BMW M8 Competition",
+    "price": "$550/day",
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Sports",
+    "description": "High-performance grand tourer with V8 power",
+    "seats": 4,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "New Arrival"
+  },
+  {
+    "id": 3,
+    "name": "Audi R8 Spyder",
+    "price": "$650/day",
+    "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Exotic",
+    "description": "Supercar with stunning V10 engine and open top",
+    "seats": 2,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "Limited"
+  },
+  {
+    "id": 4,
+    "name": "Porsche 911 GT3",
+    "price": "$750/day",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Sports",
+    "description": "Iconic sports car with track-focused precision",
+    "seats": 2,
+    "transmission": "PDK",
+    "fuel": "Petrol",
+    "tag": "Premium"
+  },
+  {
+    "id": 5,
+    "name": "Range Rover Autobiography",
+    "price": "$500/day",
+    "image": "https://images.unsplash.com/photo-1563720223185-11003dccd935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "SUV",
+    "description": "Ultimate luxury SUV with commanding presence",
+    "seats": 5,
+    "transmission": "Automatic",
+    "fuel": "Hybrid",
+    "tag": "Popular"
+  },
+  {
+    "id": 6,
+    "name": "Lamborghini Huracan",
+    "price": "$1200/day",
+    "image": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Exotic",
+    "description": "Italian supercar with aggressive styling",
+    "seats": 2,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "Exclusive"
+  },
+  {
+    "id": 7,
+    "name": "Ferrari Roma",
+    "price": "$1000/day",
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Exotic",
+    "description": "Elegant grand tourer with timeless design",
+    "seats": 4,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "New"
+  },
+  {
+    "id": 8,
+    "name": "Bentley Continental GT",
+    "price": "$700/day",
+    "image": "https://images.unsplash.com/photo-1542282088-fe8426682b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury",
+    "description": "British grand tourer with unmatched refinement",
+    "seats": 4,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "Premium"
+  },
+  {
+    "id": 9,
+    "name": "Rolls-Royce Ghost",
+    "price": "$1500/day",
+    "image": "https://images.unsplash.com/photo-1566008885218-90f92069936d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Luxury",
+    "description": "The pinnacle of automotive luxury and comfort",
+    "seats": 5,
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "tag": "Flagship"
+  }
+]

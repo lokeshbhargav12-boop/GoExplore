@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Alpine Adventure",
+    "price": "$1200",
+    "duration": "5 Days",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Explore the majestic peaks and hidden valleys of the Alps.",
+    "category": "Adventure"
+  },
+  {
+    "id": 2,
+    "name": "Tropical Paradise",
+    "price": "$800",
+    "duration": "3 Days",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Relax on pristine beaches and explore crystal clear waters.",
+    "category": "Relaxation"
+  },
+  {
+    "id": 3,
+    "name": "City Lights Safari",
+    "price": "$600",
+    "duration": "2 Days",
+    "image": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Experience the vibrant energy of the world's most iconic cities.",
+    "category": "Urban"
+  }
+]
