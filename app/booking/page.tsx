@@ -93,7 +93,7 @@ export default function BookingPage() {
                 </div>
                 <h2 className="text-2xl font-semibold mb-2">Booking Confirmed</h2>
                 <p className="text-gray-500">
-                  Thank you for choosing LuxuryRent. Our concierge team will contact you shortly to confirm your reservation details.
+                  Thank you for choosing Go Explore. Our team will contact you shortly to confirm your reservation details.
                 </p>
               </motion.div>
             ) : (

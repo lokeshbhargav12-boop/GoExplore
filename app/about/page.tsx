@@ -1,82 +1,60 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPage() {
   const values = [
     {
-      title: 'Excellence',
-      description: 'We never compromise on quality. Every vehicle in our fleet meets the highest standards of luxury and performance.',
+      title: 'Authenticity',
+      description: 'We believe in real experiences. Our tours take you beyond tourist spots to the heart of Northeast Indian culture.',
     },
     {
-      title: 'Trust',
-      description: 'Transparency is at the core of our business. No hidden fees, no surprises, just premium service.',
+      title: 'Sustainability',
+      description: 'We promote eco-friendly tourism that protects the environment and empowers local communities.',
     },
     {
-      title: 'Innovation',
-      description: 'We continuously evolve our offerings to provide the latest and greatest in luxury automotive experiences.',
+      title: 'Expertise',
+      description: 'Our guides are passionate locals who know every hidden trail, waterfall, and story that makes Northeast India magical.',
     },
     {
-      title: 'Service',
-      description: 'Our dedicated concierge team ensures every client receives personalized, white-glove treatment.',
-    },
-  ];
-
-  const team = [
-    {
-      name: 'Alexander Mitchell',
-      role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Sophia Chen',
-      role: 'Head of Operations',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'James Williams',
-      role: 'Fleet Manager',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Olivia Martinez',
-      role: 'Client Relations',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+      title: 'Personalization',
+      description: 'Every journey is crafted to match your interests, pace, and budget. No cookie-cutter itineraries here.',
     },
   ];
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
+      <section className="relative pt-32 pb-20 bg-travel-blue overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80"
+            alt="Northeast India"
+            className="w-full h-full object-cover opacity-20"
+          />
         </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">About Us</span>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold mb-6">
-              Redefining Luxury
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-black">Car Rental</span>
+            <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-3 block">About Us</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              Bridging You to the Soul<br />of <span className="text-travel-cyan">Northeast India</span>
             </h1>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Since 2010, LuxuryRent has been the premier destination for discerning clients seeking the finest automotive experiences. We believe that driving should be more than transportation, it should be an unforgettable experience.
+            <p className="text-white/70 text-sm max-w-xl mx-auto leading-relaxed">
+              More than a travel agency, we are passionate storytellers, local guides, and guardians of the Northeast's untamed beauty.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Story */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -84,10 +62,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1563720223185-11003dccd935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Luxury Fleet"
+                  src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Northeast Nature"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -99,15 +77,16 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl sm:text-4xl font-semibold mb-6">Our Story</h2>
-              <p className="text-gray-500 text-lg leading-relaxed mb-4">
-                What started as a passion for exceptional automobiles has evolved into the world\u0027s most trusted luxury car rental service. Founded in the heart of London, LuxuryRent began with a simple mission: to make the world\u0027s finest vehicles accessible to those who appreciate excellence.
+              <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-2 block">Our Story</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-travel-blue mb-6">Born in the Heart of Assam</h2>
+              <p className="text-xs text-travel-text-secondary leading-relaxed mb-4">
+                Go Explore was founded with a simple yet powerful vision: to share the breathtaking beauty and rich cultural tapestry of Northeast India with travelers from around the world. What began as a small local initiative has grown into a trusted name in experiential travel.
               </p>
-              <p className="text-gray-500 text-lg leading-relaxed mb-4">
-                Today, we operate in over 25 major cities worldwide, maintaining a fleet of more than 500 meticulously maintained luxury and exotic vehicles. From the latest supercars to timeless classics, every car in our collection represents the pinnacle of automotive engineering.
+              <p className="text-xs text-travel-text-secondary leading-relaxed mb-4">
+                Based in Assam, we have spent over a decade exploring every corner of the Northeast—from the misty hills of Meghalaya to the serene monasteries of Arunachal Pradesh, from the wildlife corridors of Kaziranga to the living root bridges of Cherrapunji.
               </p>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                Our commitment goes beyond providing beautiful cars. We curate complete experiences, ensuring every moment with LuxuryRent becomes a cherished memory.
+              <p className="text-xs text-travel-text-secondary leading-relaxed">
+                Our team consists of passionate local guides, travel enthusiasts, and hospitality experts who understand that every journey should be as unique as the traveler embarking on it. We don't just show you places—we connect you with stories, people, and experiences that stay with you forever.
               </p>
             </motion.div>
           </div>
@@ -115,77 +94,162 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-neutral-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">Our Values</h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
+            <span className="section-subtitle text-xs tracking-[0.25em] mb-3">What We Stand For</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-travel-blue">
+              Our <span className="text-travel-cyan">Core Values</span>
+            </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="bg-white rounded-3xl p-8 shadow-sm"
+                className="bg-white rounded-xl p-8 shadow-[0_2px_12px_rgba(0,75,141,0.06)] hover:shadow-[0_4px_20px_rgba(0,75,141,0.12)] transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center text-white text-lg font-bold mb-4">
+                <div className="w-10 h-10 bg-travel-blue rounded-xl flex items-center justify-center text-white text-sm font-bold mb-4">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-gray-500">{value.description}</p>
+                <h3 className="text-sm font-bold text-travel-blue mb-2">{value.title}</h3>
+                <p className="text-xs text-travel-text-secondary leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">Leadership Team</h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              The passionate individuals behind LuxuryRent
-            </p>
-          </motion.div>
+      {/* Why Choose Us Detail */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-xs text-travel-cyan uppercase tracking-[0.25em] mb-2 block">Why Us</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-travel-blue mb-6">Experience Northeast Like a Local</h2>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: 'Local Expertise',
+                    desc: 'Our guides grew up in these lands. They know the hidden trails, the best seasons, and the most authentic experiences.',
+                  },
+                  {
+                    title: 'Tailored Itineraries',
+                    desc: 'Whether you want adventure, culture, or relaxation, we craft trips that match your unique travel style.',
+                  },
+                  {
+                    title: 'Responsible Tourism',
+                    desc: 'We partner with local communities, use sustainable practices, and ensure your travels leave a positive impact.',
+                  },
+                  {
+                    title: '24/7 Support',
+                    desc: 'From planning to your last day, our team is always just a call away at +91 91056 83331.',
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4">
+                    <span className="w-6 h-6 rounded-full bg-travel-cyan/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-travel-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <div>
+                      <h4 className="text-xs font-bold text-travel-blue mb-1">{item.title}</h4>
+                      <p className="text-xs text-travel-text-secondary leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8">
+                <Link
+                  href="/booking/"
+                  className="inline-block px-8 py-3 bg-travel-blue text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-travel-blue-dark transition-all hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  Start Your Journey
+                </Link>
+              </div>
+            </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:order-first"
+            >
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Travel"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Adventure"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4 pt-8">
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Nature"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                      alt="Culture"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Banner */}
+      <section className="py-16 bg-travel-blue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: '10+', label: 'Years Experience' },
+              { value: '500+', label: 'Happy Travelers' },
+              { value: '50+', label: 'Destinations' },
+              { value: '99%', label: 'Satisfaction Rate' },
+            ].map((stat, index) => (
               <motion.div
-                key={member.name}
+                key={stat.label}
                 className="text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="aspect-square rounded-3xl overflow-hidden mb-4 shadow-lg">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-semibold text-lg">{member.name}</h3>
-                <p className="text-gray-500">{member.role}</p>
+                <div className="text-3xl sm:text-4xl font-bold text-travel-cyan mb-1">{stat.value}</div>
+                <div className="text-xs text-white/60 tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>

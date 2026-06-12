@@ -8,8 +8,8 @@ import { AuthProvider } from "../lib/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Luxury Car Rental",
-  description: "Premium luxury car rental service",
+  title: "Go Explore | Discover The World With Us",
+  description: "Go Explore is more than a travel agency. Based in the heart of Assam, we curate immersive journeys across Shillong, Arunachal Pradesh, and beyond.",
 };
 
 export default function RootLayout({
